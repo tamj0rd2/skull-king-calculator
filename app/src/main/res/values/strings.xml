@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Skull King Calculator</string>
     <string name="add_player">+1</string>
-    <string name="player">Player</string>
+    <string name="playerLabel">Player %1$s</string>
     <string name="name">Name</string>
-    <string name="players">Players</string>
+    <string name="playerSetup">No. of players</string>
     <string name="remove_player">-1</string>
 </resources>

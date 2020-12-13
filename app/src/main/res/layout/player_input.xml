@@ -9,7 +9,7 @@
         android:id="@+id/playerNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/player"
+        android:text="@string/playerLabel"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/playerNameInput"
         app:layout_constraintStart_toStartOf="parent"
