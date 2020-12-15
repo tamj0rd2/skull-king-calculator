@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/topLevelLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:id="@+id/players"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/playerSetup"
         android:textSize="18sp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/addPlayer"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/removePlayer"
+        app:layout_constraintBaseline_toBaselineOf="@id/removePlayer"
+        />
 
     <Button
         android:id="@+id/removePlayer"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32sp"
-        android:layout_marginTop="16dp"
         android:text="@string/remove_player"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/players"
@@ -42,18 +43,26 @@
         android:id="@+id/addPlayer"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/add_player"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/playerCount"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/players"
+        app:layout_constraintTop_toTopOf="@id/removePlayer" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/playerConfig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="players,playerCount,addPlayer,removePlayer"
-        tools:layout_editor_absoluteY="731dp" />
+        app:constraint_referenced_ids="players,playerCount,addPlayer,removePlayer" />
+
+    <Button
+        android:id="@+id/startGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

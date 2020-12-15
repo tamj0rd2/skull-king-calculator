@@ -11,4 +11,4 @@ class GameSetupViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
 }
 
-data class Player(val name: String)
+data class Player(val id: Int, var name: String = "")
