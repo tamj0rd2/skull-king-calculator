@@ -28,6 +28,8 @@ class GameSetupFragment : Fragment(R.layout.fragment_game_setup) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        this.activity?.title = this.resources.getString(R.string.gameSetupTitle)
+
         this.topLevelLayout = view.findViewById(R.id.topLevelLayout)
         this.playerConfigBarrier = view.findViewById(R.id.playerConfig)
         this.playerCountTextView = view.findViewById(R.id.playerCount)
@@ -87,10 +89,11 @@ class GameSetupFragment : Fragment(R.layout.fragment_game_setup) {
     }
 
     private fun startGame() {
+        val players = this.players
         this.parentFragmentManager.commit {
             setReorderingAllowed(true)
             addToBackStack(null)
-            replace(R.id.fragment_container_view, DealAndBetFragment.newInstance("hello", "world"))
+            replace(R.id.fragment_container_view, DealAndBetFragment.newInstance(players, 1))
         }
     }
 }

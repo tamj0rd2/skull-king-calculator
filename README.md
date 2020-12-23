@@ -2,7 +2,7 @@
 
 A calculator for the card game Skull King
 
-Game rules: https://www.ultraboardgames.com/skull-king/game-rules.php
+[Game rules](https://www.ultraboardgames.com/skull-king/game-rules.php)
 
 ## Development
 
