@@ -13,6 +13,12 @@ class GameSetupViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
 }
 
+data class RoundScore(val bet: Int, var wins: Int) {
+    fun addAWin() {
+        this.wins += 1
+    }
+}
+
 data class Player(val id: Int, var name: String = "") : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

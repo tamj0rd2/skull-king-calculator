@@ -48,7 +48,9 @@ class GameSetupFragment : Fragment(R.layout.fragment_game_setup) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        this.players.forEachIndexed { index, player -> player.name = this.playerInputs[index].getInputValue() }
+        this.players.forEachIndexed { index, player ->
+            player.name = this.playerInputs[index].getInputValue()
+        }
         this.playerInputs.clear()
     }
 
@@ -89,7 +91,11 @@ class GameSetupFragment : Fragment(R.layout.fragment_game_setup) {
     }
 
     private fun startGame() {
-        val players = this.players
+        val updatedPlayers = this.players.mapIndexed { index, player -> player.copy(name = this.playerInputs[index].getInputValue()) }
+        this.players.clear()
+        this.players.addAll(updatedPlayers)
+        val players = players
+
         this.parentFragmentManager.commit {
             setReorderingAllowed(true)
             addToBackStack(null)

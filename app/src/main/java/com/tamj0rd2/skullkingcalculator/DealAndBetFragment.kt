@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.tamj0rd2.skullkingcalculator.components.BettingCard
 import com.tamj0rd2.skullkingcalculator.viewmodels.Player
-import kotlin.math.roundToInt
 
 private const val ARG_PLAYERS = "players"
 private const val ARG_ROUND_NUMBER = "roundNumber"
@@ -15,6 +14,8 @@ private const val ARG_ROUND_NUMBER = "roundNumber"
 class DealAndBetFragment : Fragment(R.layout.fragment_deal_and_bet) {
     private lateinit var players: MutableList<Player>
     private var roundNumber: Int = 0
+
+    private val bettingCards = mutableListOf<BettingCard>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,7 @@ class DealAndBetFragment : Fragment(R.layout.fragment_deal_and_bet) {
             String.format(this.resources.getString(R.string.dealCardsAndBet), this.roundNumber)
 
         val topLevelLayout = view.findViewById<LinearLayout>(R.id.topLevelLayout)
-        this.addBettingCard(topLevelLayout)
+        this.players.forEach { player -> this.addBettingCard(topLevelLayout, player) }
     }
 
     companion object {
@@ -48,17 +49,22 @@ class DealAndBetFragment : Fragment(R.layout.fragment_deal_and_bet) {
             }
     }
 
-    private fun addBettingCard(linearLayout: LinearLayout) {
-//        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, this.getHeightInDp(50))
-
-        val bettingCard = BettingCard(this.context, null)
-        bettingCard.setInfo(this.players[0], 2)
-//        bettingCard.layoutParams = layoutParams
-        linearLayout.addView(bettingCard)
+    private fun startGame() {
+        val bets = this.players.mapIndexed { index, player ->  }
     }
 
-    private fun getHeightInDp(height: Int): Int {
-        val density = this.context?.resources?.displayMetrics?.density ?: throw Error("No density for some reason")
-        return (height * density).roundToInt()
+    private fun addBettingCard(linearLayout: LinearLayout, player: Player) {
+        val bettingCard = BettingCard(this.context, null)
+        bettingCard.setInfo(player, 2)
+        linearLayout.addView(bettingCard)
+        this.bettingCards.add(bettingCard)
+    }
+}
+
+data class PlayerBet(val player: Player, val bet: ) {
+    var wins = 0
+
+    fun incrementWins() {
+        this.wins ++
     }
 }

@@ -3,6 +3,7 @@ package com.tamj0rd2.skullkingcalculator.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.tamj0rd2.skullkingcalculator.R
@@ -23,20 +24,26 @@ class BettingCard(context: Context?, attrs: AttributeSet?) : LinearLayout(contex
         this.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, this.getHeightInDp(50))
         this.playerNameLabel = this.findViewById(R.id.playerNameLabel)
         this.betLabel = this.findViewById(R.id.betAmount)
+
+        val incrementButton = this.findViewById<ImageButton>(R.id.incrementBet)
+        incrementButton.setOnClickListener { this.incrementBet() }
+
+        val decrementButton = this.findViewById<ImageButton>(R.id.decrementBet)
+        decrementButton.setOnClickListener { this.decrementBet() }
     }
 
     fun setInfo(player: Player, bet: Int = 0) {
         this.bet = bet
-        this.playerNameLabel.text = player.name
+        this.playerNameLabel.text = player.name.toString()
         this.betLabel.text = this.bet.toString()
     }
 
-    fun incrementBet() {
+    private fun incrementBet() {
         this.bet += 1
         this.betLabel.text = this.bet.toString()
     }
 
-    fun decrementBet() {
+    private fun decrementBet() {
         this.bet -= 1
         this.betLabel.text = this.bet.toString()
     }
